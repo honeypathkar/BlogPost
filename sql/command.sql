@@ -1,3 +1,9 @@
+--Create database
+CREATE DATABASE blog;
+
+--Using database
+USE blog;
+
 --Creating table posts
 CREATE TABLE `posts`(
     `id` INT,
