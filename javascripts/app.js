@@ -28,11 +28,14 @@ app.get("/", (req, res) => res.send("Hello World"));
 
 //Fetching data on /api/posts route
 app.get("/api/posts", (req, res) => {
+  //Select query for fetching all product form database
   const sql = "SELECT * FROM posts";
   db.query(sql, (err, results) => {
     if (err) {
+      //If any error than showing status code 500
       res.status(500).send("Error Fetching Posts from database");
     } else {
+      //Sending data to /api/posts route
       res.json(results);
     }
   });
@@ -45,9 +48,11 @@ app.get("/api/posts/:id", (req, res) => {
 
   db.query(sql, [postId], (err, results) => {
     if (err) {
+      //If any error than showing status code 500
       res.status(500).send("Error Fetching Post from database");
     } else {
       if (results.length > 0) {
+        //If found than showing the first post
         res.json(results[0]);
       } else {
         res.status(404).json({ error: "Post not found" });
@@ -57,6 +62,7 @@ app.get("/api/posts/:id", (req, res) => {
 });
 
 //Running the port
-app.listen(5000, () => {
-  console.log("Server is running on localhost:5000");
+const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on localhost:${PORT}`);
 });

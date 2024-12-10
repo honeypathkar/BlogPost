@@ -36,6 +36,7 @@ fetch("http://localhost:5000/api/posts")
     blogContainer.innerHTML = blogCards;
 
     const blogCardsElements = blogContainer.querySelectorAll(".bg-gray-800");
+    //Adding onclick command on every post
     blogCardsElements.forEach((card) => {
       card.addEventListener("click", () => {
         const postId = card.getAttribute("data-id");
